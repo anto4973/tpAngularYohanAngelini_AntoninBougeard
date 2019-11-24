@@ -1,0 +1,36 @@
+<div id="wrap">
+
+    <div *ngIf="isActive">        
+        <form novalidate name="myform" action="#">
+        <div class="form_wrap">
+            <h1 >TP angular</h1>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="nameManga" name="name" placeholder="Nom du manga"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="categorie" name="categorie" placeholder="Catégorie"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="genre" name="genre" placeholder="Genre"/>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput type="text" [(ngModel)]="note" name="note" placeholder="Note"/>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <button mat-raised-button (click)="addManga()" type="button">Save</button>
+            <button mat-raised-button (click)="clearStorage()" type="button">clear</button>
+        </div>
+        </form>
+    </div>
+    
+    <div *ngIf="!isActive">
+    <app-manga 
+        *ngFor="let manga of mangas"
+        (update)="saveManga()" 
+        [manga]="manga">
+    </app-manga>
+    </div>
+</div>
+
